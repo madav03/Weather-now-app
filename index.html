@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WeatherNow — current weather information for cities worldwide.">
+  <title>WeatherNow | Current Weather</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="WeatherNow home">
+        <span class="brand-mark">☀</span>
+        <span>Weather<span class="brand-light">Now</span></span>
+      </a>
+      <div class="top-note"><span class="live-dot"></span> CURRENT CONDITIONS</div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <p class="eyebrow">YOUR DAILY WEATHER COMPANION</p>
+        <h1>Understand the sky.<br><span>Plan your day.</span></h1>
+        <p class="intro-copy">Current weather conditions, made simple. Search any city to get started.</p>
+      </section>
+
+      <section class="search-panel" aria-label="Search weather by city">
+        <form id="search-form">
+          <label class="sr-only" for="city-input">City name</label>
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="city-input" type="text" placeholder="Enter a city, e.g. Delhi" autocomplete="off" required>
+          <button id="search-button" type="submit">Search <span aria-hidden="true">→</span></button>
+        </form>
+        <div class="api-row">
+          <label for="api-key">OpenWeatherMap API key</label>
+          <input id="api-key" type="password" placeholder="Paste your API key here" autocomplete="off">
+          <span class="api-help">Used for this session only</span>
+        </div>
+        <div class="quick-cities" aria-label="Popular cities">
+          <span>Try:</span>
+          <button type="button" class="city-chip" data-city="Delhi">Delhi</button>
+          <button type="button" class="city-chip" data-city="Mumbai">Mumbai</button>
+          <button type="button" class="city-chip" data-city="London">London</button>
+          <button type="button" class="city-chip" data-city="Tokyo">Tokyo</button>
+        </div>
+      </section>
+
+      <div id="status-message" class="status-message" role="status" aria-live="polite">
+        Add your API key, then search for a city to load live weather.
+      </div>
+
+      <section id="weather-section" class="weather-layout hidden" aria-live="polite">
+        <article class="current-card">
+          <div class="current-card-top">
+            <div>
+              <p class="card-kicker">CURRENT WEATHER</p>
+              <h2 id="city-name">Delhi, IN</h2>
+              <p id="local-date" class="muted">Updated just now</p>
+            </div>
+            <span id="country-badge" class="country-badge">IN</span>
+          </div>
+          <div class="temperature-row">
+            <img id="weather-icon" src="" alt="Weather condition icon">
+            <div>
+              <div class="temperature"><span id="temperature">--</span><span class="degree">°C</span></div>
+              <p id="weather-description" class="weather-description">Weather description</p>
+            </div>
+          </div>
+          <div class="feels-row">
+            <span>Feels like <strong id="feels-like">--°C</strong></span>
+            <span class="separator">•</span>
+            <span>H: <strong id="temp-max">--°</strong></span>
+            <span>L: <strong id="temp-min">--°</strong></span>
+          </div>
+        </article>
+
+        <article class="details-area">
+          <div class="section-heading">
+            <div>
+              <p class="card-kicker">WEATHER DETAILS</p>
+              <h2>Today's conditions</h2>
+            </div>
+            <span class="detail-symbol" aria-hidden="true">✳</span>
+          </div>
+          <div class="details-grid">
+            <div class="detail-card">
+              <span class="detail-icon humidity-icon" aria-hidden="true">◉</span>
+              <p>Humidity</p><strong id="humidity">--<small>%</small></strong>
+              <span class="detail-caption">Moisture in the air</span>
+            </div>
+            <div class="detail-card">
+              <span class="detail-icon wind-icon" aria-hidden="true">≋</span>
+              <p>Wind speed</p><strong id="wind-speed">--<small> m/s</small></strong>
+              <span class="detail-caption">Air movement</span>
+            </div>
+            <div class="detail-card">
+              <span class="detail-icon pressure-icon" aria-hidden="true">◌</span>
+              <p>Pressure</p><strong id="pressure">--<small> hPa</small></strong>
+              <span class="detail-caption">Atmospheric pressure</span>
+            </div>
+            <div class="detail-card">
+              <span class="detail-icon visibility-icon" aria-hidden="true">◎</span>
+              <p>Visibility</p><strong id="visibility">--<small> km</small></strong>
+              <span class="detail-caption">How far you can see</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="api-note">
+        <span class="info-icon" aria-hidden="true">i</span>
+        <p><strong>Where does the data come from?</strong> WeatherNow requests current conditions from the OpenWeatherMap API. An internet connection and a valid API key are required for live results.</p>
+      </section>
+    </main>
+
+    <footer>
+      <span>WeatherNow</span>
+      <span>Built with HTML · CSS · JavaScript · OpenWeatherMap</span>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
